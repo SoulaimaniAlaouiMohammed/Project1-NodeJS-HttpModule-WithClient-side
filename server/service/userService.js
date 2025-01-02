@@ -1,6 +1,10 @@
 import fs from "fs"
+import path from "path"
+import { fileURLToPath } from "url"
 import { checkFieldsExistence, generateId } from "../utils/utils.js"
-const dbPath = './../../data/users.json'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const dbPath = path.join(__dirname, './../../data/users.json')
 
 export const getAllUsers = async () => {
     try {
@@ -43,15 +47,8 @@ export const createUser = async (user) => {
 export const updateUser = async (_id, _data) => {
     let user = await getUserById(_id)
     if (!user) return false
-    const {
-        firstName = user.firstName,
-        lastName = user.lastName,
-        email = user.email,
-        password = user.password,
-        country = user.country,
-        profileImage = user.profileImage,
-        skills = user.skills
-    } = _data
+    const { firstName = user.firstName, lastName = user.lastName, email = user.email, password = user.password,
+        country = user.country, profileImage = user.profileImage, skills = user.skills } = _data
     const users = await getAllUsers()
     const index = users.findIndex(u => u.id === _id)
     users[index] = {id: _id, firstName, lastName, email, password, country, profileImage, skills}
