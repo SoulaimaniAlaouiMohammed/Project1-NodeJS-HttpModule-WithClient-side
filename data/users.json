@@ -1,3 +1,42 @@
 {
-   "users": []
+   "users": [
+      {
+         "id": "TXjLFoPV4lej",
+         "firstName": "user1 fisrtName",
+         "lastName": "user1 lastName",
+         "email": "user1@email.com",
+         "password": "user1Password",
+         "country": "Morocco",
+         "profileImage": "imageURL",
+         "skills": [
+            "C",
+            "C++"
+         ],
+         "reqHeaders": {
+            "reqDate": "2025-01-04T12:57:48.020Z",
+            "reqMethod": "POST",
+            "reqPath": "/api/users"
+         }
+      },
+      {
+         "id": "LvviFG5wsruW",
+         "firstName": "user2 fisrtName",
+         "lastName": "user2 lastName",
+         "email": "user222@email.com",
+         "password": "user2Password",
+         "country": "UK",
+         "profileImage": "imageURL",
+         "skills": [
+            "Cobol",
+            "Arduino",
+            "C++",
+            "GO"
+         ],
+         "reqHeaders": {
+            "reqDate": "2025-01-04T15:04:28.286Z",
+            "reqMethod": "POST",
+            "reqPath": "/api/users"
+         }
+      }
+   ]
 }

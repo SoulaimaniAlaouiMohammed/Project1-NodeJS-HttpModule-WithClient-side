@@ -23,23 +23,27 @@ export const getUserById = async (_id) => {
 
 export const getUserByEmail = async (_email) => {
     return await getAllUsers()
-    .then(users => users == null ? null : (users.find(user => user.email === _email) || false))
+    .then(users => (users.find(user => user.email === _email) || false))
 }
 
 export const getValidUser = async (_email, _password) => {
-    await getUserByEmail()
-    .then(result => result == null ? null : !result ? false : (result.password === _password) || false)
+    return await getUserByEmail(_email)
+    .then(result => !result ? false : (result.password === _password ? result : 'IncPassword'))
 }
 
-export const createUser = async (user) => {
+export const createUser = async (req, user) => {
     const users = await getAllUsers()
     const id = generateId()
     let {firstName, lastName, email, password, country, profileImage, skills} = user
     if (!firstName || !lastName || !email || !password || !country || !profileImage || !skills)
-        throw new Error('All the fields required.')
+        throw new Error('All the fields are required.')
     const checkValidity = await checkFieldsExistence(id, email)
     if (checkValidity) throw new Error('id or email already exist.')
-    users.push({id, firstName, lastName, email, password, country, profileImage, skills})
+    let reqDate = new Date()
+    let reqMethod = req.method
+    let reqPath = req.url
+    users.push({id, firstName, lastName, email, password, country, profileImage, skills, 
+        reqHeaders: {reqDate, reqMethod, reqPath}})
     await fs.promises.writeFile(dbPath, JSON.stringify({users}, null, 3))
     return await getAllUsers()
 }
@@ -47,11 +51,15 @@ export const createUser = async (user) => {
 export const updateUser = async (_id, _data) => {
     let user = await getUserById(_id)
     if (!user) return false
+    const reqUpdatedDate = new Date()
     const { firstName = user.firstName, lastName = user.lastName, email = user.email, password = user.password,
-        country = user.country, profileImage = user.profileImage, skills = user.skills } = _data
+        country = user.country, profileImage = user.profileImage, skills = user.skills,
+        reqHeaders: {reqMethod = user.reqMethod, reqPath = user.reqPath} = user.reqHeaders } 
+        = _data
     const users = await getAllUsers()
     const index = users.findIndex(u => u.id === _id)
-    users[index] = {id: _id, firstName, lastName, email, password, country, profileImage, skills}
+    users[index] = {id: _id, firstName, lastName, email, password, country, profileImage, 
+                skills, reqHeaders: {reqDate: reqUpdatedDate, reqMethod, reqPath}}
     await fs.promises.writeFile(dbPath, JSON.stringify({users}, null, 3))
     return await getUserById(_id)
 }

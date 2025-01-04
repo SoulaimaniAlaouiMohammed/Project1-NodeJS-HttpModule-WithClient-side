@@ -1,4 +1,4 @@
-import { createUser, deleteUser, getAllUsers, getUserById, updateUser } from "../service/userService.js";
+import { createUser, deleteUser, getAllUsers, getUserByEmail, getUserById, getValidUser, updateUser } from "../service/userService.js";
 import { checkFieldsExistence } from "../utils/utils.js";
 
 
@@ -8,7 +8,7 @@ import { checkFieldsExistence } from "../utils/utils.js";
 // : console.log(res))
 
 
-// getUserById(1)
+// getUserById('LvviFG5wsruW')
 // .then(res => res == null ? console.log('error accured in database, try later.') : 
 // !res ? console.log('no user found with this id.') : console.log(res))
 // .catch(err => console.error(err))
@@ -42,8 +42,8 @@ import { checkFieldsExistence } from "../utils/utils.js";
 
 
 
-// updateUser('lWET6GFNSoe9', {
-//     skills: ['Cobol', 'Arduino']
+// updateUser('LvviFG5wsruW', {
+//     skills: ['Cobolllllll', 'Arduino']
 // })
 // .then(response => !response ? console.log('No user found with this id.') : console.log(response))
 // .catch(err => console.error(err))
@@ -53,3 +53,12 @@ import { checkFieldsExistence } from "../utils/utils.js";
 // deleteUser('lWET6GFNSoe9')
 // .then(result => !result ? console.log('No user found with this id.') : console.log(result))
 // .catch(err => console.error(err))
+
+
+// getUserByEmail('user1@email.com')
+// .then(result => !result ? console.log('No user found with this email') : console.log(result))
+
+
+// getValidUser('user1@email.com', 'user1Password')
+// .then(result => !result ? console.log('No user found with this email.') : (result === 'IncPassword')
+//      ? console.log('Incorrect password.') : console.log(result))
