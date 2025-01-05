@@ -1,39 +1,31 @@
 {
    "users": [
       {
-         "id": "TXjLFoPV4lej",
-         "firstName": "user1 fisrtName",
+         "id": "jj0fUobQxoPh",
+         "firstName": "user1 firstName",
          "lastName": "user1 lastName",
          "email": "user1@email.com",
          "password": "user1Password",
-         "country": "Morocco",
-         "profileImage": "imageURL",
-         "skills": [
-            "C",
-            "C++"
-         ],
+         "country": "UK",
+         "profileImage": "https://picsum.photos/200/300",
+         "skills": "C, C++",
          "reqHeaders": {
-            "reqDate": "2025-01-04T12:57:48.020Z",
+            "reqDate": "2025-01-05T21:32:29.963Z",
             "reqMethod": "POST",
             "reqPath": "/api/users"
          }
       },
       {
-         "id": "LvviFG5wsruW",
-         "firstName": "user2 fisrtName",
+         "id": "HeoQKYda3xDv",
+         "firstName": "user2 firstName",
          "lastName": "user2 lastName",
-         "email": "user222@email.com",
+         "email": "user2@email.com",
          "password": "user2Password",
-         "country": "UK",
-         "profileImage": "imageURL",
-         "skills": [
-            "Cobol",
-            "Arduino",
-            "C++",
-            "GO"
-         ],
+         "country": "Morocco",
+         "profileImage": "https://picsum.photos/200/300",
+         "skills": "Cobol, Ruby, Go",
          "reqHeaders": {
-            "reqDate": "2025-01-04T15:04:28.286Z",
+            "reqDate": "2025-01-05T21:44:52.657Z",
             "reqMethod": "POST",
             "reqPath": "/api/users"
          }
